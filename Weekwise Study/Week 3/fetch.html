@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Fetch API Data</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  <button onclick="getData()">Get Person Data</button>
+  <pre id="json-output"></pre>
+  
+  <script>
+    async function getData() {
+      try {
+        const response = await fetch("https://fakerapi.it/api/v1/persons?_quantity=5");
+        const finalData = await response.json();
+        
+        const output = document.getElementById("json-output");
+        output.textContent = JSON.stringify(finalData, null, 2); // Format JSON data with indentation
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    }
+  </script>
+</body>
+</html>
