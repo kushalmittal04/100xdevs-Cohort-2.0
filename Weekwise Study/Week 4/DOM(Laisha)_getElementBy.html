@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>JavaScript DOM Example</title>
+</head>
+<body>
+
+  <h1>JavaScript HTML DOM</h1>
+  
+  <div>
+    <p>Finding Element By Id</p>
+    <p id="intro">Text Extracted using ID</p>
+    <p>This example demonstrates the <b>getElementById</b> method.</p>
+    <p id="demo"></p>
+    <script>
+      const element = document.getElementById("intro");
+      document.getElementById("demo").innerHTML = "The text from the intro paragraph is: " + element.innerHTML;
+    </script>
+  </div>
+
+  <br><br>
+
+  <div>
+    <p>Finding Element By Tag Name</p>
+    <h5>Text Extracted using Tag Name</h5>
+    <p>This example demonstrates the <b>getElementsByTagName</b> method.</p>
+    <p id="demo2"></p>
+    <script>
+      const element2 = document.getElementsByTagName("h5");
+      document.getElementById("demo2").innerHTML = "The first heading in the document is: " + element2[0].innerHTML;
+    </script>
+  </div>
+  
+  <br><br>
+  
+  <div>
+    <p>Finding HTML Elements By Class Name</p>
+    <p class="intro">Hello World!</p>
+    <p class="intro">This example demonstrates the <b>getElementsByClassName()</b> method.</p>
+    <p id="demo3"></p>
+    <script>
+      const x = document.getElementsByClassName("intro");
+      document.getElementById("demo3").innerHTML = 'The first paragraph (index 0) with class="intro" is: ' + x[0].innerHTML;
+    </script>
+  </div>
+
+  <br><br>
+
+  <div>
+    <p>Finding Elements by CSS Selectors</p>
+    <p class="example">This is the first paragraph with class "example".</p>
+    <p class="example">This is the second paragraph with class "example".</p>
+    <p>This paragraph does not have the class "example".</p>
+    <p id="demo4"></p>
+    <script>
+        // Select all elements with class "example"
+        const elements = document.querySelectorAll(".example");
+        let text = "Paragraphs with class 'example':<br>";
+        elements.forEach((element, index) => {
+            text += `(${index + 1}) ${element.innerHTML} <br>`;
+        });
+        document.getElementById("demo4").innerHTML = text;
+    </script>
+  </div>
+
+</body>
+</html>
