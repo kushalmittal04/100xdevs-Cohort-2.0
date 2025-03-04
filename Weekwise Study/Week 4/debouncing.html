@@ -1,0 +1,43 @@
+<!-- Website to create sum of two numbers -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>test</title>
+</head>
+
+<body>
+  <input onInput="debounceMyFunction()" type="text" id="firstNumber" placeholder="First Number"></input>
+  <br></br>
+  <input onInput="debounceMyFunction()" type="text" id="secondNumber" placeholder="Second Number"></input>
+  <br></br>
+  <div id="result"></div>
+
+  <script>
+
+    let timeout;
+    function debounceMyFunction () {
+        // delay the call to myFunction until i havenot been called for 100ms and I've been called atleast once
+            clearTimeout(timeout);
+            timeout = setTimeout(function() {
+            myFunction();
+        },100);
+    }    
+
+    
+    async function myFunction() {
+        const x = document.getElementById("firstNumber").value;
+        const y = document.getElementById("secondNumber").value;
+    
+        const response = await fetch("http://localhost:3000/sum?a=" + x + "&b=" + y);
+        const ans = await response.text();
+        document.getElementById("result").innerHTML = "The Result is: " + ans;
+    }
+
+
+  </script>
+
+</body>
+
+</html>
