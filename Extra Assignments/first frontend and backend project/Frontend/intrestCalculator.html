@@ -1,0 +1,34 @@
+<!-- Dynamic Website to calculate intrest amount -->
+<!-- Given: principal, rate, time -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+  <h1>Simple Intrest Calculator:</h1>
+  <input id="principal" type="text" placeholder="Enter Principal Amount"></input>
+  <br></br>
+  <input id="rate" type="text" placeholder="Enter Rate"></input>
+  <br></br>
+  <input id="time" type="text" placeholder="Enter Time"></input>
+  <br></br>
+  <button onclick="calculate()">Calculate</button>
+  <br></br>
+  <div id="result"></div>
+
+  <script>
+    async function calculate() {
+      const principal = document.getElementById("principal").value;
+      const rate = document.getElementById("rate").value;
+      const time = document.getElementById("time").value;
+
+      const response = await fetch("http://localhost:3000/intrest?principal=" + principal + "&rate=" + rate + "&time=" + time);
+      const answer = await response.json();
+
+      document.getElementById("result").innerHTML = "Intrest Amount is : Rs" + answer.intrest + "<br>The Total Amount with Intrest becomes : Rs" + answer.total;
+    }
+  </script>
+  
+</body>
+  
+</html>
