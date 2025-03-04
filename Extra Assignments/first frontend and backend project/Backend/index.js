@@ -14,15 +14,15 @@ app.get("/sum", (req, res) => {
 });
 
 // localhost:3000/intrest?principle=1000&rate=5&time=2
-// app.get("/intrest", (req, res) => {
-//     const principle = parseInt(req.query.principle);
-//     const rate = parseInt(req.query.rate);
-//     const time = parseInt(req.query.time);
-//     const result = a + b;
-//     res.json({
-//         sum: result
-//     });
-// });
+app.get("/intrest", (req, res) => {
+    const principle = parseInt(req.query.principle);
+    const rate = parseInt(req.query.rate);
+    const time = parseInt(req.query.time);
+    const result = a + b;
+    res.json({
+        sum: result
+    });
+});
 
 app.listen(3000, () => {
     console.log("Server running on port 3000");
