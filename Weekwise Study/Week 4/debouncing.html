@@ -25,7 +25,6 @@
         },100);
     }    
 
-    
     async function myFunction() {
         const x = document.getElementById("firstNumber").value;
         const y = document.getElementById("secondNumber").value;
@@ -33,6 +32,15 @@
         const response = await fetch("http://localhost:3000/sum?a=" + x + "&b=" + y);
         const ans = await response.text();
         document.getElementById("result").innerHTML = "The Result is: " + ans;
+    }
+
+    async function myFunction2() {
+      const x = document.getElementById("firstNumber").value;
+      const y = document.getElementById("secondNumber").value;
+    
+      //using axios
+      const response = await axios.get("http://localhost:3000/sum?a=" + x + "&b=" + y);
+      console.log(response.text);
     }
 
 
