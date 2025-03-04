@@ -16,11 +16,15 @@ app.get("/sum", (req, res) => {
 // localhost:3000/intrest?principle=1000&rate=5&time=2
 app.get("/intrest", (req, res) => {
     const principle = parseInt(req.query.principle);
-    const rate = parseInt(req.query.rate);
+    const rate = parseFloat(req.query.rate);
     const time = parseInt(req.query.time);
-    const result = a + b;
+    
+    const intrest = (principle * rate * time)/100;
+    const total = principle + intrest;
+    
     res.json({
-        sum: result
+        intrest: intrest,
+        total: total
     });
 });
 
