@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    
+    <title>
+        TODO App using DOM
+    </title>
+
+</head>
+
+
+<body>
+    <script>
+        function addTodo() {
+            const title = document.getElementById("title").value;
+            const description = document.getElementById("description").value;
+            console.log(title);
+            console.log(description);
+        
+            const originalHtml = document.getElementById("container").innerHTML;
+            console.log(originalHtml);
+            
+            document.getElementById("container").innerHTML = originalHtml + `
+                <div>
+                    <h3>${title}</h3>
+                    <p>${description}</p>
+                    <button>Mark as done</button>
+                </div>
+            `; 
+        }
+    </script>
+
+    <div>
+        <input id="title" type="text" placeholder="Title">
+        <br><br>
+        <input id="description" type="text" placeholder="Description">
+        <br><br>
+        <button onclick="addTodo()">Add TODO</button>
+        <br><br>
+    </div>
+
+    <div id="container"></div>
+
+</body>
+
+</html>

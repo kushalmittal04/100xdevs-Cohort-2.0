@@ -95,4 +95,26 @@ router.get('/purchasedCourses', userMiddleware, async (req, res) => {
     });
 });
 
+
+router.delete('/removeCourse/:courseId', userMiddleware, async (req,res) => {
+    const username = req.username;
+    const courseId = req.params.courseId;
+
+    console.log(username);
+    console.log(courseId);
+
+    await User.updateOne({
+        username: username
+    },{
+        "$pull": {
+            purchasedCourses: courseId
+        }
+    });
+
+    res.json({
+        msg: "Course Removed Successfully"
+    });
+});
+
+
 module.exports = router

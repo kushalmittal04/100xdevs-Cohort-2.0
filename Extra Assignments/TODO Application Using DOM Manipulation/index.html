@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    
+    <title>
+        TODO App using DOM
+    </title>
+
+</head>
+
+
+<body>
+    <script>
+        let globalId = 1;
+
+        function markAsDone (todoId) {
+            const parent = document.getElementById(todoId);
+            parent.children[2].innerHTML = "Done!";
+        }
+
+        function createChild (title, description, id) {
+            const child = document.createElement("div");
+        
+            const firstGrandChild = document.createElement("h3");
+            firstGrandChild.innerHTML = title;
+        
+            const secondGrandChild = document.createElement("p");
+            secondGrandChild.innerHTML = description;
+        
+            const thirdGrandChild  = document.createElement("button");
+            thirdGrandChild.innerHTML = "Mark as done";
+            
+            thirdGrandChild.setAttribute("onclick", `markAsDone(${id})`);
+
+            child.appendChild(firstGrandChild);
+            child.appendChild(secondGrandChild);
+            child.appendChild(thirdGrandChild);
+            child.setAttribute("id",id);
+
+            return child;
+        }
+
+
+        function addTodo() {
+            const title = document.getElementById("title").value;
+            const description = document.getElementById("description").value;
+
+            const parent = document.getElementById("todos");
+
+            parent.appendChild(createChild(title, description, globalId++));
+            
+            //    // Structure of child
+            //    <div>
+            //        <h3>${title}</h3>
+            //        <p>${description}</p>
+            //        <button>Mark as done</button>
+            //    </div>
+     
+        }
+    </script>
+
+    <div>
+        <input id="title" type="text" placeholder="TODO Title">
+        <br><br>
+        <input id="description" type="text" placeholder="TODO Description">
+        <br><br>
+        <button onclick="addTodo()">Add TODO</button>
+        <br><br>
+    </div>
+
+    <div id="todos"></div>
+
+</body>
+
+</html>
